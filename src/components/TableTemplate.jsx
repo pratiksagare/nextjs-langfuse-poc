@@ -10,14 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
 
 export function TableTemplate({ data = [],
   sortConfig,
@@ -112,8 +104,6 @@ export function TableTemplate({ data = [],
       <TableBody>
 
         {data.map((trace) => (
-          // <Dialog key={trace.id}>
-          // <DialogTrigger asChild key={trace.id}>
           <TableRow key={trace.id}
             className="cursor-pointer select-none hover:bg-muted"
             onClick={() =>
@@ -177,29 +167,6 @@ export function TableTemplate({ data = [],
               {trace.metadata?.totalTokens || "-"}
             </TableCell>
           </TableRow>
-          //   </DialogTrigger>
-          //   <DialogContent className={"w-full"}>
-          //     <DialogHeader>
-          //       <DialogTitle>Scrollable Content</DialogTitle>
-          //       <DialogDescription>
-          //         This is a dialog with scrollable content.
-          //       </DialogDescription>
-          //     </DialogHeader>
-          //     <div className="-mx-4 no-scrollbar  max-h-[50vh] overflow-y-auto px-4">
-          //       {Array.from({ length: 10 }).map((_, index) => (
-          //         <p key={index} className="mb-4 leading-normal">
-          //           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          //           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-          //           enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          //           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          //           reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          //           nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-          //           sunt in culpa qui officia deserunt mollit anim id est laborum.
-          //         </p>
-          //       ))}
-          //     </div>
-          //   </DialogContent>
-          // </Dialog>
         ))}
 
       </TableBody>
