@@ -1,3 +1,7 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 import {
   Table,
   TableBody,
@@ -18,12 +22,13 @@ import {
 export function TableTemplate({ data = [],
   sortConfig,
   onSort, }) {
+  const router = useRouter();
   return (
     <Table className="w-full  table-fixed">
       <TableHeader>
         <TableRow>
           <TableHead
-            className="w-[5%] cursor-pointer"
+            className="w-[5%] cursor-pointer select-none"
             onClick={() => onSort("input")}
           >
             Prompt
@@ -31,7 +36,7 @@ export function TableTemplate({ data = [],
               (sortConfig.direction === "asc" ? " ↑" : " ↓")}
           </TableHead>
           <TableHead
-            className="w-[7%] cursor-pointer"
+            className="w-[7%] cursor-pointer select-none"
             onClick={() => onSort("output")}
           >
             Response
@@ -40,7 +45,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="w-[2%] cursor-pointer"
+            className="w-[2%] cursor-pointer select-none"
             onClick={() => onSort("model")}
           >
             Model
@@ -49,7 +54,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden md:table-cell w-[2%] cursor-pointer"
+            className="hidden md:table-cell w-[2%] cursor-pointer select-none"
             onClick={() => onSort("provider")}
           >
             Provider
@@ -58,7 +63,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden lg:table-cell w-[2%] cursor-pointer"
+            className="hidden lg:table-cell w-[2%] cursor-pointer select-none"
             onClick={() => onSort("totalCost")}
           >
             Cost
@@ -67,7 +72,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden lg:table-cell w-[2%] cursor-pointer"
+            className="hidden lg:table-cell w-[2%] cursor-pointer select-none"
             onClick={() => onSort("latency")}
           >
             Latency
@@ -76,7 +81,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden lg:table-cell w-[2%] cursor-pointer truncate"
+            className="hidden lg:table-cell w-[2%] cursor-pointer select-none truncate"
             onClick={() => onSort("inputTokens")}
           >
             Input Token
@@ -85,7 +90,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden lg:table-cell w-[2%] cursor-pointer truncate"
+            className="hidden lg:table-cell w-[2%] cursor-pointer select-none truncate"
             onClick={() => onSort("outputTokens")}
           >
             Output Token
@@ -94,7 +99,7 @@ export function TableTemplate({ data = [],
           </TableHead>
 
           <TableHead
-            className="hidden lg:table-cell w-[2%] cursor-pointer truncate"
+            className="hidden lg:table-cell w-[2%] cursor-pointer select-none truncate"
             onClick={() => onSort("totalTokens")}
           >
             Total Token
@@ -109,7 +114,11 @@ export function TableTemplate({ data = [],
         {data.map((trace) => (
           // <Dialog key={trace.id}>
           // <DialogTrigger asChild key={trace.id}>
-          <TableRow key={trace.id}>
+          <TableRow key={trace.id}
+            className="cursor-pointer select-none hover:bg-muted"
+            onClick={() =>
+              router.push(`/observation/${trace.observations[0]}`)
+            }>
             <TableCell
               className="max-w-0 truncate font-medium"
               title={trace.input}

@@ -1,4 +1,4 @@
-import { getAllTraces } from "@/lib/adaptors/langfuse-adaptors";
+import { getAllTraces } from "@/lib/adaptors/langfuse-adaptors.js";
 export async function GET(request) {
     // For example, fetch data from your DB here
     const traces = await getAllTraces()

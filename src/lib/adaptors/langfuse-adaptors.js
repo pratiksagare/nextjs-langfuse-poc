@@ -7,11 +7,30 @@ const langfuse = new Langfuse({
     baseUrl: LANGFUSE_HOST, // cloud or local
 });
 
-const getAllTraces = async () => {
+export const getAllTraces = async () => {
     const traces = await langfuse.fetchTraces({
         limit: 100,
     });
     return traces;
 }
 
-module.exports = { getAllTraces }
+export const getTraceByObservationId = async (obsId) => {
+    try {
+        const observation = await langfuse.fetchObservation(obsId);
+
+        if (
+            observation?.data?.error ===
+            "LangfuseNotFoundError"
+        ) {
+            return null;
+        }
+
+        return observation;
+    } catch (error) {
+        console.error("Langfuse Error:", error);
+
+        return null;
+    }
+};
+
+// module.exports = { getAllTraces, getTraceByObservationId }
