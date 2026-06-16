@@ -22,5 +22,29 @@
     "model": "gpt-5",
     "version": "v1",
     "createdAt": "2026-06-16T15:31:39.957Z"
+  },
+  "jarvis|0585408e-208a-416f-a4ab-9dc97c1f57a9|v1.0.0": {
+    "id": "0585408e-208a-416f-a4ab-9dc97c1f57a9",
+    "agentName": "jarvis",
+    "description": "this is test",
+    "tags": [
+      "testTag"
+    ],
+    "provider": "Ollama",
+    "model": "lamma3.1",
+    "version": "v1.0.0",
+    "createdAt": "2026-06-16T18:03:51.625Z"
+  },
+  "local|adaca366-1894-437c-8cbf-d639f515cac5|v5": {
+    "id": "adaca366-1894-437c-8cbf-d639f515cac5",
+    "agentName": "local",
+    "description": "test",
+    "tags": [
+      "new"
+    ],
+    "provider": "Ollama",
+    "model": "lamma3.1",
+    "version": "v5",
+    "createdAt": "2026-06-16T18:59:31.336Z"
   }
 }
